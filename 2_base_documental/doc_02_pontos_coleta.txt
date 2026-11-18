@@ -1,0 +1,32 @@
+PREFEITURA MUNICIPAL — CADASTRO DE PONTOS DE COLETA
+
+Data de publicação: 15/02/2026
+Tema: Pontos de coleta de óleo usado
+
+A Prefeitura Municipal disponibiliza pontos de coleta para recebimento de óleo de cozinha usado. Os locais recebem o material armazenado em garrafas plásticas fechadas, conforme o regulamento municipal.
+
+PONTO ECO-01
+Localização: Centro Comunitário Central.
+Endereço: Rua das Flores, 120, Centro.
+Funcionamento: Segunda a sexta-feira, das 08h às 17h.
+Status: ATIVO.
+
+PONTO ECO-02
+Localização: Unidade Ambiental Norte.
+Endereço: Avenida das Palmeiras, 450, Jardim Norte.
+Funcionamento: Segunda a sexta-feira, das 09h às 16h.
+Status: ATIVO.
+
+PONTO ECO-03
+Localização: Parque Municipal Sul.
+Endereço: Rua do Lago, 80, Jardim Sul.
+Funcionamento: Segunda a sábado, das 08h às 14h.
+Status: ATIVO.
+
+Todos os pontos recebem óleo de cozinha usado devidamente acondicionado. Não existe cobrança pelo recebimento do material.
+
+A capacidade de armazenamento de cada unidade é limitada. Quando o recipiente de armazenamento atingir sua capacidade máxima, a unidade poderá suspender temporariamente o recebimento.
+
+Os cidadãos devem verificar comunicados posteriores antes de se deslocarem até qualquer unidade.
+
+Este cadastro representa uma simulação de serviço público municipal.
