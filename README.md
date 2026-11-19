@@ -36,7 +36,7 @@ Todos os documentos têm metadados `titulo`, `data_publicacao` e `tema`.
 
 ## 4. Decisões técnicas
 
-- **Chunking:** comparamos 500/100 e 1000/200 ![RAG com fontes](prints/03_rag.png). Escolhemos 500/100 porque isola cada bloco "PONTO ECO-xx" e o comunicado, sem misturar pontos no mesmo trecho.
+- **Chunking:** comparamos 500/100 e 1000/200 ![RAG com fontes](prints/01_chunking.png). Escolhemos 500/100 porque isola cada bloco "PONTO ECO-xx" e o comunicado, sem misturar pontos no mesmo trecho.
 - **Embeddings:** `paraphrase-multilingual-MiniLM-L12-v2` (funciona melhor em português que o MiniLM em inglês).
 - **Recuperação híbrida:** a busca só semântica (v1) não distinguia ECO-01 de ECO-02 e trazia sempre o comunicado. Adicionamos busca por palavra-chave (ids citados e termos raros) e ordenamos do documento mais recente para o mais antigo. Cobertura dos trechos necessários: **v1 = 8/12 (67%) → v2 = 12/12 (100%)**.
 - **LLM:** llama3.1:8b . Ollama Cloud retornou erro 402 (cota), então usamos modelo local no Colab com GPU.
