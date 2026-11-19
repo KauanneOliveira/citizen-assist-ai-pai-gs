@@ -77,20 +77,53 @@ RAG: 1 chamada ao LLM por pergunta. Agente: 2 a 4 chamadas. Avaliação RAGAS: 4
 3. Executar tudo (Runtime, Run all). Versões usadas: langchain 1.5.2, langchain-core 1.8.3, langchain-ollama 1.1.0, langchain-chroma 1.1.0, chromadb 1.5.9, langchain-huggingface 1.2.3, sentence-transformers 5.7.0, ragas 0.4.4, gradio 6.31.0.
 
 ## 10. Prints
-## 10. Prints
+
+### Base documental e índice (seções 1 e 2)
+Comparação das duas estratégias de chunking: 500/100 gera 10 chunks e 1000/200 gera 6. Nas duas, o status e a interdição do ECO-02 ficam inteiros no mesmo trecho. Escolhemos 500/100.
 ![Comparação de chunking](prints/01_chunking.png)
+
+Índice ChromaDB criado com 10 chunks e metadados (`doc_id`, `data_publicacao`, `tema`, `titulo`).
 ![Índice ChromaDB](prints/02_chroma_colecao.png)
+
+Busca semântica com a distância de cada trecho para a pergunta "O ponto ECO-02 está funcionando?" (quanto menor, mais próximo).
 ![Busca semântica com distâncias](prints/02_chroma_busca.png)
+
+### Pipeline RAG (seção 3)
+Três perguntas respondidas com citação do documento de origem: uma simples (horário do ECO-01) e duas com armadilha (status do ECO-02 e descarte aos sábados).
 ![RAG com fontes](prints/03_rag.png)
+
+Pergunta sem resposta na base (telefone do ECO-05): o sistema responde que não encontrou a informação em vez de inventar.
 ![RAG: "não sei"](prints/03_rag_nao_sei.png)
+
+### Agente com ferramentas (seção 4)
+Trace do agente (pensamento, ação e observação) para "ECO-03 no domingo às 10:00": a ferramenta calcula que está fechado e que abre na segunda às 08:00.
 ![Agente: ECO-03 no domingo](prints/04_agente_domingo.png)
+
+Erro controlado: com um ponto inexistente (ECO-99) o agente não quebra e informa os pontos válidos. Na pergunta seguinte, a ferramenta informa que o ECO-02 está interditado.
 ![Agente: erro controlado](prints/04_agente_erro_controlado.png)
+
+### Interface (seção 5)
+Interface Gradio no modo RAG: responde que o ECO-02 está interditado desde 20/02/2026 e mostra as fontes consultadas.
 ![Interface Gradio, modo RAG](prints/05_gradio_rag.png)
+
+Mesma interface no modo agente: a pergunta "Posso levar óleo ao ECO-03 no sábado às 13:00?" usa a ferramenta de horário. O histórico da conversa fica visível.
 ![Interface Gradio, modo agente](prints/05_gradio_agente.png)
+
+### Guardrails (seção 6)
+Os quatro guardrails disparando: fora de escopo, dado sensível (LGPD), prompt injection na fonte (trecho malicioso removido) e limite de confiança (ponto inexistente).
 ![Guardrails](prints/06_guardrails.png)
+
+Calibração das distâncias do limite de confiança e teste automatizado dos guardrails (todos passaram).
 ![Testes dos guardrails](prints/06_guardrails_testes.png)
+
+### Avaliação (seção 7)
+Execução do RAGAS: as quatro métricas medidas sobre as 8 perguntas, com o tempo de cada uma.
 ![RAGAS, execução](prints/07_ragas_execucao.png)
+
+Resultado do RAGAS por pergunta e as médias geral, do nível 1 (simples) e do nível 2 (armadilha).
 ![RAGAS, tabela](prints/07_ragas_tabela.png)
+
+Melhoria da recuperação: cobertura dos trechos necessários de 8/12 (67%) com busca só semântica (v1) para 12/12 (100%) com a busca híbrida (v2).
 ![Cobertura v1 x v2](prints/08_v1_v2.png)
 
 ## 11. Uso de IA
